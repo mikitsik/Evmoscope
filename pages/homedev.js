@@ -1,9 +1,71 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
+import dayjs from 'dayjs'
 
 export default function Home() {
+
+  const BlocksCard = () => {
+    const initialBlockInfo = {
+      time: '',
+      height: 0,
+      txsPerBlock: 0,
+      abt: 0
+    }
+
+    const url = 'https://tendermint.bd.evmos.org:26657/block'
+    const [blockInfo, setBlockInfo] = useState(initialBlockInfo)
+
+    useEffect(() => {
+      async function load() {
+        const currentBlock = await fetch(url)
+          .then((response) => {
+            if (response.ok) return response.json()
+          })
+
+        if (!currentBlock) return
+
+        const height = currentBlock.result.block.header.height
+        const currentTime = dayjs(currentBlock.result.block.header.time)
+
+        const previousBlock = await fetch(`${url}?height=${parseInt(height) - 1}`)
+        .then((response) => {
+          if (response.ok) return response.json()
+        })
+
+        if (!previousBlock) return
+
+        const previousTime = dayjs(previousBlock.result.block.header.time)
+
+        setBlockInfo({
+          time: currentTime.format('ddd, DD MMM YYYY HH:mm:ss'),
+          height: height,
+          txsPerBlock: currentBlock.result.block.data.txs.length,
+          abt: currentTime.diff(previousTime, 'second', true)
+        })
+      }
+      const interval = setInterval(load, 2500)
+
+      return () => clearInterval(interval)
+
+    }, [])
+
+
+    return (
+      <Link href={"/blocks"}>
+        <a className={styles.card}>
+          <h2>Blocks</h2>
+          <p><span>time:&nbsp;&nbsp;</span>{blockInfo.time}</p>
+          <p><span>height:&nbsp;&nbsp;</span>{blockInfo.height}</p>
+          <p><span>txs per block:&nbsp;&nbsp;</span>{blockInfo.txsPerBlock}</p>
+          <p><span>average block time:&nbsp;&nbsp;</span>{blockInfo.abt} sec</p>
+        </a>
+      </Link>
+    )
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,7 +74,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <div className={styles.header}>
         <Link href="/">
           <a>
             <span>
@@ -20,14 +82,11 @@ export default function Home() {
             </span>
           </a>
         </Link>
+      </div>
 
+      <main className={styles.main}>
         <div className={styles.grid}>
-          <Link href={"/blocks"}>
-            <a className={styles.card}>
-              <h2>Bloks</h2>
-              <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
-            </a>
-          </Link>
+          <BlocksCard />
 
           <Link href={"/transactions"}>
             <a className={styles.card}>
@@ -36,9 +95,9 @@ export default function Home() {
             </a>
           </Link>
 
-          <Link href={"/smartcontracts"}>
+          <Link href={"/smart_contracts"}>
             <a className={styles.card}>
-              <h2>Smartcontracts</h2>
+              <h2>Smart Contracts</h2>
               <p>Learn about Next.js in an interactive course with quizzes!</p>
             </a>
           </Link>
