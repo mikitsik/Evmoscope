@@ -4,6 +4,7 @@ import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import BlocksAndTxsCard from '../components/BlocksAndTxsCard'
 import EconomicsCard from '../components/EconomicsCard'
+import SmartContractsCard from '../components/SmartContractsCard'
 
 export default function Home() {
   return (
@@ -28,13 +29,7 @@ export default function Home() {
         <div className={styles.grid}>
           <BlocksAndTxsCard />
           <EconomicsCard />
-
-          <Link href={"/smart_contracts"}>
-            <a className={styles.card}>
-              <h2>Smart Contracts</h2>
-              <p>Learn about Next.js in an interactive course with quizzes!</p>
-            </a>
-          </Link>
+          <SmartContractsCard />
 
           <Link href={"/social"}>
             <a className={styles.card}>

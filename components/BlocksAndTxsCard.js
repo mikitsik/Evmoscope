@@ -13,23 +13,34 @@ export default function BlocksAndTxsCard() {
     ethTypeTxs: 0
   }
 
-  const url = 'https://tendermint.bd.evmos.org:26657/block'
   const [info, setInfo] = useState(initialInfo)
-
-  const url2 = 'https://tendermint.bd.evmos.org:26657/abci_info?'
-  async function load2() {
-    const currentBlock = await fetch(url2)
+  async function load() {
+    const currentBlock = await fetch('https://tendermint.bd.evmos.org:26657/abci_info?', {
+      method: 'GET',
+      headers: {
+      accept: 'application/json',
+    }})
       .then((response) => {
         if (response.ok) return response.json()
+      })
+      .catch((error) => {
+        console.log(error)
       })
 
     if (!currentBlock) return
 
     const height = currentBlock.result.response.last_block_height
 
-    const currentBlockAndTxs = await fetch(`https://rest.bd.evmos.org:1317/cosmos/tx/v1beta1/txs/block/${height}`)
+    const currentBlockAndTxs = await fetch(`https://evmos-api.polkachu.com/cosmos/tx/v1beta1/txs/block/${height}`, {
+      method: 'GET',
+      headers: {
+      accept: 'application/json',
+    }})
       .then((response) => {
         if (response.ok) return response.json()
+      })
+      .catch((error) => {
+        console.log(error)
       })
 
     if (!currentBlockAndTxs) return
@@ -40,9 +51,16 @@ export default function BlocksAndTxsCard() {
     const ethTxs = currentBlockAndTxs.txs.map((i) => /MsgEthereumTx/.exec(i.body.messages[0]['@type'])).filter(i => i !== null).length
     const cosmosTxs = txsPerBlock - ethTxs
 
-    const previousBlock = await fetch(`https://tendermint.bd.evmos.org:26657/block?height=${previousBlockHeight}`)
+    const previousBlock = await fetch(`https://tendermint.bd.evmos.org:26657/block?height=${previousBlockHeight}`, {
+      method: 'GET',
+      headers: {
+      accept: 'application/json',
+    }})
       .then((response) => {
         if (response.ok) return response.json()
+      })
+      .catch((error) => {
+        console.log(error)
       })
 
     if (!previousBlock) return
@@ -60,7 +78,7 @@ export default function BlocksAndTxsCard() {
   }
 
   useEffect(() => {
-    const interval = setInterval(load2, 3000)
+    const interval = setInterval(load, 3000)
     return () => clearInterval(interval)
   }, [])
 

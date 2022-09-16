@@ -18,57 +18,55 @@ export default function EconomicsCard() {
 
   const urlPolkachuEpoch = 'https://evmos-api.polkachu.com/evmos/epochs/v1/current_epoch?identifier=day'
 
-  useEffect(() => {
-    async function load() {
-      const dataCoingecko = await fetch(urlCoingecko)
-        .then((response) => {
-          if (response.ok) return response.json()
-        })
-
-      if (!dataCoingecko) return
-
-      const price = dataCoingecko.market_data.current_price.usd
-      const marketCap = (dataCoingecko.market_data.market_cap.usd / 1000000).toFixed(2)
-      const rank = dataCoingecko.market_cap_rank
-      const evmosMarkets = dataCoingecko.tickers.length
-
-      const pool = await fetch(urlPolkachuPool)
-        .then((response) => {
-          if (response.ok) return response.json()
-        })
-
-      if (!pool) return
-
-      const epochProvision = await fetch(urlPolkachuEpochProvision)
-        .then((response) => {
-          if (response.ok) return response.json()
-        })
-
-      if (!epochProvision) return
-
-      const polkachuEpoch = await fetch(urlPolkachuEpoch)
-        .then((response) => {
-          if (response.ok) return response.json()
-        })
-
-      if (!polkachuEpoch) return
-
-      const annualProvisions = epochProvision.epoch_mint_provision.amount * polkachuEpoch.current_epoch
-      const apr = (annualProvisions / pool.pool.bonded_tokens * 100).toFixed(2)
-
-      setEconomicsInfo({
-        price: price,
-        apr: apr,
-        marketCap: marketCap,
-        rank: rank,
-        evmosMarkets: evmosMarkets
+  async function load() {
+    const dataCoingecko = await fetch(urlCoingecko)
+      .then((response) => {
+        if (response.ok) return response.json()
       })
-    }
 
+    if (!dataCoingecko) return
+
+    const price = dataCoingecko.market_data.current_price.usd
+    const marketCap = (dataCoingecko.market_data.market_cap.usd / 1000000).toFixed(2)
+    const rank = dataCoingecko.market_cap_rank
+    const evmosMarkets = dataCoingecko.tickers.length
+
+    const pool = await fetch(urlPolkachuPool)
+      .then((response) => {
+        if (response.ok) return response.json()
+      })
+
+    if (!pool) return
+
+    const epochProvision = await fetch(urlPolkachuEpochProvision)
+      .then((response) => {
+        if (response.ok) return response.json()
+      })
+
+    if (!epochProvision) return
+
+    const polkachuEpoch = await fetch(urlPolkachuEpoch)
+      .then((response) => {
+        if (response.ok) return response.json()
+      })
+
+    if (!polkachuEpoch) return
+
+    const annualProvisions = epochProvision.epoch_mint_provision.amount * polkachuEpoch.current_epoch
+    const apr = (annualProvisions / pool.pool.bonded_tokens * 100).toFixed(2)
+
+    setEconomicsInfo({
+      price: price,
+      apr: apr,
+      marketCap: marketCap,
+      rank: rank,
+      evmosMarkets: evmosMarkets
+    })
+  }
+
+  useEffect(() => {
     const interval = setInterval(load, 7000)
-
     return () => clearInterval(interval)
-
   }, [])
 
   return (
@@ -79,7 +77,7 @@ export default function EconomicsCard() {
         <p><span>apr:&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.apr}%</p>
         <p><span>market cap:&nbsp;&nbsp;&nbsp;&nbsp;</span>${economicsInfo.marketCap} M</p>
         <p><span>rank:&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.rank}</p>
-        <p><span>evmos markets:&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.evmosMarkets}</p>
+        <p><span>markets:&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.evmosMarkets}</p>
       </a>
     </Link>
   )
