@@ -57,7 +57,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -81,20 +81,24 @@
 }
 
 .card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+  margin: 0 0 1.2rem 0;
+  font-size: 2rem;
 }
 
 .card p {
   display: flex;
   justify-content: space-between;
   margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
+  font-size: 1.5rem;
+  line-height: 1.8;
 }
 
 .card span {
   font-weight: 500;
+}
+
+.card .secondHeader {
+  margin: 1.2rem 0 1rem;
 }
 
 .header {

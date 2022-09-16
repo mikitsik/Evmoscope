@@ -18,7 +18,7 @@ export default function Home() {
         <Link href="/">
           <a>
             <span>
-              <Image src="/logo.svg" alt="Evmoscope Logo" width={260} height={69} />
+              <Image src="/logo.svg" alt="Evmoscope Logo" width={320} height={80} />
             </span>
           </a>
         </Link>

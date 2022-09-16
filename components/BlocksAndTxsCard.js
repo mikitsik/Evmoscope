@@ -8,44 +8,60 @@ export default function BlocksAndTxsCard() {
     time: '',
     height: 0,
     txsPerBlock: 0,
-    abt: 0
+    abt: 0,
+    cosmosTypeTxs: 0,
+    ethTypeTxs: 0
   }
 
   const url = 'https://tendermint.bd.evmos.org:26657/block'
   const [info, setInfo] = useState(initialInfo)
 
-  useEffect(() => {
-    async function load() {
-      const currentBlock = await fetch(url)
-        .then((response) => {
-          if (response.ok) return response.json()
-        })
-
-      if (!currentBlock) return
-
-      const height = currentBlock.result.block.header.height
-      const currentTime = dayjs(currentBlock.result.block.header.time)
-
-      const previousBlock = await fetch(`${url}?height=${parseInt(height) - 1}`)
-        .then((response) => {
-          if (response.ok) return response.json()
-        })
-
-      if (!previousBlock) return
-
-      const previousTime = dayjs(previousBlock.result.block.header.time)
-
-      setInfo({
-        time: currentTime.format('HH:mm:ss'),
-        height: height,
-        txsPerBlock: currentBlock.result.block.data.txs.length,
-        abt: currentTime.diff(previousTime, 'second', true)
+  const url2 = 'https://tendermint.bd.evmos.org:26657/abci_info?'
+  async function load2() {
+    const currentBlock = await fetch(url2)
+      .then((response) => {
+        if (response.ok) return response.json()
       })
-    }
-    const interval = setInterval(load, 2500)
 
+    if (!currentBlock) return
+
+    const height = currentBlock.result.response.last_block_height
+
+    const currentBlockAndTxs = await fetch(`https://rest.bd.evmos.org:1317/cosmos/tx/v1beta1/txs/block/${height}`)
+      .then((response) => {
+        if (response.ok) return response.json()
+      })
+
+    if (!currentBlockAndTxs) return
+
+    const currentTime = dayjs(currentBlockAndTxs.block.header.time)
+    const previousBlockHeight = currentBlockAndTxs.block.last_commit.height
+    const txsPerBlock = currentBlockAndTxs.block.data.txs.length
+    const ethTxs = currentBlockAndTxs.txs.map((i) => /MsgEthereumTx/.exec(i.body.messages[0]['@type'])).filter(i => i !== null).length
+    const cosmosTxs = txsPerBlock - ethTxs
+
+    const previousBlock = await fetch(`https://tendermint.bd.evmos.org:26657/block?height=${previousBlockHeight}`)
+      .then((response) => {
+        if (response.ok) return response.json()
+      })
+
+    if (!previousBlock) return
+
+    const previousTime = dayjs(previousBlock.result.block.header.time)
+
+    setInfo({
+      time: currentTime.format('HH:mm:ss'),
+      height: height,
+      txsPerBlock: txsPerBlock,
+      abt: currentTime.diff(previousTime, 'second', true).toFixed(2),
+      cosmosTypeTxs: cosmosTxs,
+      ethTypeTxs: ethTxs
+    })
+  }
+
+  useEffect(() => {
+    const interval = setInterval(load2, 3000)
     return () => clearInterval(interval)
-
   }, [])
 
 
@@ -54,10 +70,13 @@ export default function BlocksAndTxsCard() {
       <a className={styles.card}>
         <h2>Blocks</h2>
         <p><span>height:&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.height}</p>
-        <p><span>txs per block:&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.txsPerBlock}</p>
         <p><span>exec. time:&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.abt} sec</p>
         <p><span>block time:&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.time}</p>
-        <h2>Transactions</h2>
+        <h2 className={styles.secondHeader}>Transactions</h2>
+        <p><span>txs per block:&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.txsPerBlock}</p>
+        <p><span>cosmos type:&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.cosmosTypeTxs}</p>
+        <p><span>ethereum type:&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.ethTypeTxs}</p>
+        <p><span>total:&nbsp;&nbsp;&nbsp;&nbsp;</span>--</p>
       </a>
     </Link>
   )
