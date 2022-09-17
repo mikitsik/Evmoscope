@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 
-export default function SocialAndGithubCard() {
+export default function IbcCard() {
   const urlCoingecko = 'https://api.coingecko.com/api/v3/coins/evmos'
   const urlPolkachu = 'https://evmos-api.polkachu.com/cosmos/gov/v1beta1/proposals'
   const [socialAndDevInfo, setSocialAndDevInfo] = useState({})
@@ -38,9 +38,9 @@ export default function SocialAndGithubCard() {
   useEffect(() => { load() }, [])
 
   return (
-    <Link href={"/social_and_github"}>
+    <Link href={"/ibc"}>
       <a className={styles.card}>
-        <h2>Social</h2>
+        <h2>IBC</h2>
         <p><span>voting proposals:&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.votingProposals}</p>
         <p><span>total proposals:&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.totalProposals}</p>
         <p><span>twitter followers:&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.twitterFollowers}</p>
