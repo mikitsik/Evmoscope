@@ -5,6 +5,8 @@ import styles from '../styles/Home.module.css'
 import BlocksAndTxsCard from '../components/BlocksAndTxsCard'
 import EconomicsCard from '../components/EconomicsCard'
 import SmartContractsCard from '../components/SmartContractsCard'
+import ValidatorsCard from '../components/ValidatorsCard'
+import SocialAndGithubCard from '../components/SocialAndGithubCard'
 
 export default function Home() {
   return (
@@ -28,25 +30,10 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.grid}>
           <BlocksAndTxsCard />
-          <EconomicsCard />
           <SmartContractsCard />
-
-          <Link href={"/social"}>
-            <a className={styles.card}>
-              <h2>Social</h2>
-              <p>Discover and deploy boilerplate example Next.js projects.</p>
-            </a>
-          </Link>
-
-
-          <Link href={"/validators"}>
-            <a className={styles.card}>
-              <h2>Validators</h2>
-              <p>
-                Instantly deploy your Next.js site to a public URL with Vercel.
-              </p>
-            </a>
-          </Link>
+          <EconomicsCard />
+          <ValidatorsCard />
+          <SocialAndGithubCard />
         </div>
       </main>
 

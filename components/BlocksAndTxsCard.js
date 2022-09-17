@@ -4,16 +4,7 @@ import styles from '../styles/Home.module.css'
 import dayjs from 'dayjs'
 
 export default function BlocksAndTxsCard() {
-  const initialInfo = {
-    time: '',
-    height: 0,
-    txsPerBlock: 0,
-    abt: 0,
-    cosmosTypeTxs: 0,
-    ethTypeTxs: 0
-  }
-
-  const [info, setInfo] = useState(initialInfo)
+  const [info, setInfo] = useState({})
   async function load() {
     const currentBlock = await fetch('https://tendermint.bd.evmos.org:26657/abci_info?', {
       method: 'GET',
@@ -48,7 +39,7 @@ export default function BlocksAndTxsCard() {
     const currentTime = dayjs(currentBlockAndTxs.block.header.time)
     const previousBlockHeight = currentBlockAndTxs.block.last_commit.height
     const txsPerBlock = currentBlockAndTxs.block.data.txs.length
-    const ethTxs = currentBlockAndTxs.txs.map((i) => /MsgEthereumTx/.exec(i.body.messages[0]['@type'])).filter(i => i !== null).length
+    const ethTxs = currentBlockAndTxs.txs.filter(i => /MsgEthereumTx/.exec(i.body.messages[0]['@type'])).length
     const cosmosTxs = txsPerBlock - ethTxs
 
     const previousBlock = await fetch(`https://tendermint.bd.evmos.org:26657/block?height=${previousBlockHeight}`, {
