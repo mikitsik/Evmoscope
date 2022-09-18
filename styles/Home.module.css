@@ -114,29 +114,30 @@
   display: inline-block;
 }
 
-.layoutContainer {
+.pageContainer {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 80px auto;
   font-weight: 400;
 }
 
-.layoutContainer h2 {
-  margin: 0 0 1.2rem 0;
+.pageContainer h2 {
+  margin: 1rem 0 2.5rem 0;
   font-size: 1.8rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
-.layoutContainer h3 {
+.pageContainer h3 {
+  margin: 2.5rem 0;
   font-size: 1.4rem;
 }
 
-.layoutContainer p {
+.pageContainer p {
   font-size: 1.3rem;
   letter-spacing: 1px;
   line-height: 1.7;
 }
 
-.layoutContainer ul {
+.pageContainer ul {
   font-size: 1.1rem;
   letter-spacing: 1px;
   line-height: 1.7;
@@ -154,15 +155,27 @@
   font-size: 1.3rem;
   letter-spacing: 1px;
   max-width: 1200px;
-  margin: 0 auto 50px;
-  text-align: end;
+  margin: 0 auto 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 
 .navMain a {
   border: 1px solid #eaeaea;
   border-radius: 5px;
   padding: 4px 17px;
+  margin: 10px 15px;
   transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.navMain a:first-child {
+  margin-right: 0;
+}
+
+.navMain a:last-child {
+  margin-left: 0;
 }
 
 .navMain a:hover {

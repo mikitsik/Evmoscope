@@ -1,10 +1,24 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import Logo from './Logo'
+import { useRouter } from 'next/router'
+import Footer from './Footer'
+
+const pages = [
+  {path: '/validators', name: 'Validators'},
+  {path: '/social_and_github', name: 'Social & Github'},
+  {path: '/smart_contracts', name: 'Smart Contracts'},
+  {path: '/ibc', name: 'IBC'},
+  {path: '/economics', name: 'Economics'},
+  {path: '/blocks_and_txs', name: 'Blocks & Txs'},
+  {path: '/about', name: 'About'}
+]
 
 export function Layout({ children }) {
+  const { asPath } = useRouter()
+  const links = asPath === '/' ? pages.filter(p => p.path === '/about') : pages.filter(p => p.path !== asPath)
+
   return (
     <div className={styles.container}>
       <Head>
@@ -12,31 +26,14 @@ export function Layout({ children }) {
         <meta name="description" content="Evmos explorer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Logo />
-
       <main className={styles.main}>
         <div className={styles.navMain}>
-          <Link href="/about">
-            <a>About</a>
-          </Link>
+          { links.map(l => { return <Link href={l.path}>{l.name}</Link> }) }
         </div>
-        <div className={styles.layoutContainer}>
-          { children }
-        </div>
+        { children }
       </main>
-
-      <footer className={styles.footer}>
-        Made with
-        <span className={styles.logo}>
-          <Image src="/heart.svg" alt="heart" width={40} height={16} />
-        </span>
-        <a
-          href="https://evmos.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >to Evmos</a>
-      </footer>
+      <Footer />
     </div>
   )
 }
