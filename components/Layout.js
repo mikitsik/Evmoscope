@@ -29,7 +29,7 @@ export function Layout({ children }) {
       <Logo />
       <main className={styles.main}>
         <div className={styles.navMain}>
-          { links.map(l => { return <Link href={l.path}>{l.name}</Link> }) }
+          { links.map(l => { return <Link key={l.name} href={l.path}>{l.name}</Link> }) }
         </div>
         { children }
       </main>
