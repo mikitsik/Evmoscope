@@ -1,4 +1,3 @@
-import styles from '../styles/Home.module.css'
 import { Layout } from '../components/Layout'
 
 export default function About() {
@@ -7,7 +6,7 @@ export default function About() {
       <h2>Hello everyone!</h2>
       <p>I developed this app within ten days before the hackathon ends. It is just a sketch written on the nextjs. In order to become a full-fledged application it is necessary to make the right architecture, apply the necessary tools and make a proper design. Due to winners announcement on or around October 10, 2022 this app is going to be under active development. Thank you! </p>
       <h3>TODO</h3>
-      <p>Core improvements</p>
+      <p>Core improvements and refactoring</p>
       <ul>
         <li>consult with the best devs on architecture and business logic of the app and its development</li>
         <li>to avoid redundant fetch queries via network and to have all the nessesary data run a mainnet node</li>

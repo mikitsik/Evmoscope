@@ -8,6 +8,7 @@ import SmartContractsCard from '../components/SmartContractsCard'
 import ValidatorsCard from '../components/ValidatorsCard'
 import SocialAndGithubCard from '../components/SocialAndGithubCard'
 import IbcCard from '../components/IbcCard'
+import Logo from '../components/Logo'
 
 export default function Home() {
   return (
@@ -18,15 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={styles.header}>
-        <Link href="/">
-          <a>
-            <span>
-              <Image src="/logo.svg" alt="Evmoscope Logo" width={345} height={90} />
-            </span>
-          </a>
-        </Link>
-      </div>
+      <Logo />
 
       <main className={styles.main}>
         <div className={styles.navMain}>

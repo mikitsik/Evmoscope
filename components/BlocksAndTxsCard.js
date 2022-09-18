@@ -75,7 +75,7 @@ export default function BlocksAndTxsCard() {
 
 
   return (
-    <Link href={"/blocks_and_transactions"}>
+    <Link href={"/blocks_and_txs"}>
       <a className={styles.card}>
         <h2>Blocks</h2>
         <p><span>height:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.height}</p>

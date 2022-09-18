@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
+import Logo from './Logo'
 
 export function Layout({ children }) {
   return (
@@ -12,17 +13,14 @@ export function Layout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className={styles.header}>
-        <Link href="/">
-          <a>
-            <span>
-              <Image src="/logo.svg" alt="Evmoscope Logo" width={345} height={90} />
-            </span>
-          </a>
-        </Link>
-      </div>
+      <Logo />
 
       <main className={styles.main}>
+        <div className={styles.navMain}>
+          <Link href="/about">
+            <a>About</a>
+          </Link>
+        </div>
         <div className={styles.layoutContainer}>
           { children }
         </div>
