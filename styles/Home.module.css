@@ -146,6 +146,10 @@
   height: 1em;
 }
 
+.logoSvg:hover {
+  fill: #0070f3;
+}
+
 .navMain {
   font-size: 1.3rem;
   letter-spacing: 1px;
