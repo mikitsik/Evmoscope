@@ -2,14 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
-import BlocksAndTxsCard from '../components/BlocksAndTxsCard'
-import EconomicsCard from '../components/EconomicsCard'
-import SmartContractsCard from '../components/SmartContractsCard'
-import ValidatorsCard from '../components/ValidatorsCard'
-import SocialAndGithubCard from '../components/SocialAndGithubCard'
-import IbcCard from '../components/IbcCard'
 
-export default function Home() {
+export function Layout({ children }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -29,20 +23,8 @@ export default function Home() {
       </div>
 
       <main className={styles.main}>
-        <div className={styles.navMain}>
-          <Link href="/about">
-            <a>
-              About
-            </a>
-          </Link>
-        </div>
-        <div className={styles.grid}>
-          <BlocksAndTxsCard />
-          <EconomicsCard />
-          <SmartContractsCard />
-          <IbcCard />
-          <ValidatorsCard />
-          <SocialAndGithubCard />
+        <div className={styles.layoutContainer}>
+          { children }
         </div>
       </main>
 

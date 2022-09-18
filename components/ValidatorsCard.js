@@ -41,13 +41,13 @@ export default function ValidatorsCard() {
     <Link href={"/validators"}>
       <a className={styles.card}>
         <h2>Validators</h2>
-        <p><span>active:&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.active}</p>
-        <p><span>min bond with:&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.minBond}</p>
-        <p><span>restake enabled on:&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.restakeEnabeled}</p>
-        <p><span>additional rewards on:&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.additionalRewards}</p>
-        <p><span>jailed:&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.jailed}</p>
-        <p><span>max bond jailed:&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.maxBondJailed}</p>
-        <p><span>total:&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.total}</p>
+        <p><span>active:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.active}</p>
+        <p><span>min bond with:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.minBond}</p>
+        <p><span>restake enabled on:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.restakeEnabeled}</p>
+        <p><span>additional rewards on:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.additionalRewards}</p>
+        <p><span>jailed:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.jailed}</p>
+        <p><span>max bond jailed:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.maxBondJailed}</p>
+        <p><span>total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.total}</p>
       </a>
     </Link>
   )

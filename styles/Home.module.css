@@ -72,7 +72,7 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 350px;
+  max-width: 370px;
 }
 
 .card:hover,
@@ -110,8 +110,56 @@
   text-align: center;
 }
 
+.layoutContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+.layoutContainer h2 {
+  margin: 0 0 1.2rem 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.layoutContainer h3 {
+  font-size: 1.2rem;
+}
+
+.layoutContainer p {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  line-height: 1.7;
+}
+
+.layoutContainer ul {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  line-height: 1.7;
+}
+
 .logo {
   height: 1em;
+}
+
+.navMain {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  max-width: 1200px;
+  margin: 0 auto 25px;
+  text-align: end;
+}
+
+.navMain a {
+  border: 1px solid #eaeaea;
+  border-radius: 5px;
+  padding: 4px 17px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.navMain a:hover {
+  color: #0070f3;
+  border-color: #0070f3;
 }
 
 .footer a:hover {

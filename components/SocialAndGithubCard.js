@@ -41,15 +41,15 @@ export default function SocialAndGithubCard() {
     <Link href={"/social_and_github"}>
       <a className={styles.card}>
         <h2>Social</h2>
-        <p><span>voting proposals:&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.votingProposals}</p>
-        <p><span>total proposals:&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.totalProposals}</p>
-        <p><span>twitter followers:&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.twitterFollowers}</p>
-        <p><span>telegram users:&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.telegramUsers}</p>
+        <p><span>voting proposals:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.votingProposals}</p>
+        <p><span>total proposals:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.totalProposals}</p>
+        <p><span>twitter followers:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.twitterFollowers}</p>
+        <p><span>telegram users:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.telegramUsers}</p>
         <h2 className={styles.secondHeader}>Github</h2>
-        <p><span>forks:&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.forks}</p>
-        <p><span>stars:&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.stars}</p>
-        <p><span>issues:&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.issues}</p>
-        <p><span>contributors:&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.contributors}</p>
+        <p><span>forks:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.forks}</p>
+        <p><span>stars:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.stars}</p>
+        <p><span>issues:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.issues}</p>
+        <p><span>contributors:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{socialAndDevInfo.contributors}</p>
       </a>
     </Link>
   )

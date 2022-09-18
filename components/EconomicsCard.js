@@ -46,7 +46,7 @@ export default function EconomicsCard() {
     if (!polkachuEpoch) return
 
     const annualProvisions = epochProvision.epoch_mint_provision.amount * polkachuEpoch.current_epoch
-    const apr = (annualProvisions / pool.pool.bonded_tokens * 100).toFixed(2) - 4
+    const apr = (annualProvisions / pool.pool.bonded_tokens * 100).toFixed(2) - 7
 
     setEconomicsInfo({
       price: price,
@@ -67,13 +67,13 @@ export default function EconomicsCard() {
     <Link href={"/economics"}>
       <a className={styles.card}>
         <h2>Economics</h2>
-        <p><span>price:&nbsp;&nbsp;&nbsp;&nbsp;</span>${economicsInfo.price}</p>
-        <p><span>apr:&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.apr}%</p>
-        <p><span>circ. supply:&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.circSupply} M</p>
-        <p><span>market cap:&nbsp;&nbsp;&nbsp;&nbsp;</span>${economicsInfo.marketCap} M</p>
-        <p><span>rank:&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.rank}</p>
-        <p><span>cosmos eco rank:&nbsp;&nbsp;&nbsp;&nbsp;</span>2</p>
-        <p><span>markets:&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.evmosMarkets}</p>
+        <p><span>price:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>${economicsInfo.price}</p>
+        <p><span>apr:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.apr}%</p>
+        <p><span>circ. supply:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.circSupply} M</p>
+        <p><span>market cap:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>${economicsInfo.marketCap} M</p>
+        <p><span>market rank:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.rank}</p>
+        <p><span>cosmos ecosys. rank:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>2</p>
+        <p><span>markets:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.evmosMarkets}</p>
       </a>
     </Link>
   )
