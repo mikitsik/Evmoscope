@@ -105,6 +105,26 @@
   margin: 1.2rem 0 1rem;
 }
 
+.developingPage {
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", "Fira Sans", Avenir, "Helvetica Neue", "Lucida Grande", sans-serif;
+  height: 60vh;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.developingPage h3 {
+  font-weight: normal;
+}
+
+.developingLeft {
+  margin-right: 25px;
+  padding: 0 30px 0 0;
+  border-right: black 1px solid;
+}
+
 .header {
   margin: 3rem 0;
   text-align: center;
@@ -178,7 +198,7 @@
   margin-left: 0;
 }
 
-.navMain a:hover {
+.navMain a:hover, a.isActiveLink {
   color: #0070f3;
   border-color: #0070f3;
 }

@@ -17,7 +17,7 @@ const pages = [
 
 export function Layout({ children }) {
   const { asPath } = useRouter()
-  const links = asPath === '/' ? pages.filter(p => p.path === '/about') : pages.filter(p => p.path !== asPath)
+  const links = asPath === '/' ? pages.filter(p => p.path === '/about') : pages
 
   return (
     <div className={styles.container}>
@@ -29,7 +29,11 @@ export function Layout({ children }) {
       <Logo />
       <main className={styles.main}>
         <div className={styles.navMain}>
-          { links.map(l => { return <Link key={l.name} href={l.path}>{l.name}</Link> }) }
+          { links.map(l => {
+            return <Link key={l.name} href={l.path}>
+              <a className={(asPath === l.path) && styles.isActiveLink}>{l.name}</a>
+            </Link>
+          }) }
         </div>
         { children }
       </main>
