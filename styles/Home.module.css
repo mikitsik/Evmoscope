@@ -88,6 +88,14 @@
   font-weight: 500;
 }
 
+.card h2.loading {
+  margin: 0 0 2rem 0;
+}
+
+.card h2.secondLoading {
+  margin: 2rem 0;
+}
+
 .card p {
   display: flex;
   justify-content: space-between;
@@ -211,6 +219,14 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+
+  .developingPage {
+    height: 30vh;
+  }
+
+  .main {
+    min-height: 60vh;
   }
 }
 

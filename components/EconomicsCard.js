@@ -1,8 +1,10 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
+import RingLoader from "react-spinners/RingLoader"
 
 export default function EconomicsCard() {
+  const [isLoading, setIsLoading] = useState(true)
   const urlCoingecko = 'https://api.coingecko.com/api/v3/coins/evmos'
   const urlPolkachuPool = 'https://evmos-api.polkachu.com/cosmos/staking/v1beta1/pool'
   const urlPolkachuEpochProvision = 'https://evmos-api.polkachu.com/evmos/inflation/v1/epoch_mint_provision'
@@ -56,12 +58,30 @@ export default function EconomicsCard() {
       rank: rank,
       evmosMarkets: evmosMarkets
     })
+
+    setIsLoading(false)
   }
 
   useEffect(() => {
     const interval = setInterval(load, 7000)
     return () => clearInterval(interval)
   }, [])
+
+  const cssOverride = {
+    display: "block",
+    margin: "0 auto"
+  }
+
+  if (isLoading) {
+    return (
+      <Link href={"/economics"}>
+        <a className={styles.card}>
+          <h2 className={styles.loading}>Economics</h2>
+          <RingLoader loading={isLoading} cssOverride={cssOverride} color={'#0070f3'} size={80} speedMultiplier={0.8} />
+        </a>
+      </Link>
+    )
+  }
 
   return (
     <Link href={"/economics"}>

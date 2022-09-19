@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
+import RingLoader from "react-spinners/RingLoader"
 
 export default function ValidatorsCard() {
   const [info, setInfo] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
   async function load() {
     const validators = await fetch('https://evmos-api.polkachu.com/cosmos/staking/v1beta1/validators?pagination.limit=500', {
       method: 'GET',
@@ -33,9 +35,29 @@ export default function ValidatorsCard() {
       maxBondJailed: maxBondJailed.toFixed(),
       total: validators.validators.length
     })
+
+    setIsLoading(false)
   }
 
   useEffect(() => { load() }, [])
+
+  useEffect(() => { load() }, [])
+
+  const cssOverride = {
+    display: "block",
+    margin: "0 auto"
+  }
+
+  if (isLoading) {
+    return (
+      <Link href={"/validators"}>
+        <a className={styles.card}>
+          <h2 className={styles.loading}>Validators</h2>
+          <RingLoader loading={isLoading} cssOverride={cssOverride} color={'#0070f3'} size={80} speedMultiplier={0.8} />
+        </a>
+      </Link>
+    )
+  }
 
   return (
     <Link href={"/validators"}>

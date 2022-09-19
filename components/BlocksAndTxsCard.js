@@ -2,9 +2,11 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import dayjs from 'dayjs'
+import RingLoader from "react-spinners/RingLoader"
 
 export default function BlocksAndTxsCard() {
   const [info, setInfo] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
   async function load() {
     const currentBlock = await fetch('https://tendermint.bd.evmos.org:26657/abci_info?', {
       method: 'GET',
@@ -66,6 +68,8 @@ export default function BlocksAndTxsCard() {
       cosmosTypeTxs: cosmosTxs,
       ethTypeTxs: ethTxs
     })
+
+    setIsLoading(false)
   }
 
   useEffect(() => {
@@ -73,6 +77,23 @@ export default function BlocksAndTxsCard() {
     return () => clearInterval(interval)
   }, [])
 
+  const cssOverride = {
+    display: "block",
+    margin: "0 auto"
+  }
+
+  if (isLoading) {
+    return (
+      <Link href={"/blocks_and_txs"}>
+        <a className={styles.card}>
+          <h2 className={styles.loading}>Blocks</h2>
+          <RingLoader loading={isLoading} cssOverride={cssOverride} color={'#0070f3'} size={80} speedMultiplier={0.8} />
+          <h2 className={styles.secondLoading}>Transactions</h2>
+          <RingLoader loading={isLoading} cssOverride={cssOverride} color={'#0070f3'} size={80} speedMultiplier={0.8} />
+        </a>
+      </Link>
+    )
+  }
 
   return (
     <Link href={"/blocks_and_txs"}>

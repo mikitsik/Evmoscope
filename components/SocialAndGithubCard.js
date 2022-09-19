@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
+import RingLoader from "react-spinners/RingLoader"
 
 export default function SocialAndGithubCard() {
   const urlCoingecko = 'https://api.coingecko.com/api/v3/coins/evmos'
   const urlPolkachu = 'https://evmos-api.polkachu.com/cosmos/gov/v1beta1/proposals'
   const [socialAndDevInfo, setSocialAndDevInfo] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
 
   async function load() {
     const dataCoingecko = await fetch(urlCoingecko)
@@ -33,9 +35,29 @@ export default function SocialAndGithubCard() {
       issues: dataCoingecko.developer_data.total_issues - dataCoingecko.developer_data.closed_issues,
       contributors: dataCoingecko.developer_data.pull_request_contributors
     })
+
+    setIsLoading(false)
   }
 
   useEffect(() => { load() }, [])
+
+  const cssOverride = {
+    display: "block",
+    margin: "0 auto"
+  }
+
+  if (isLoading) {
+    return (
+      <Link href={"/social_and_github"}>
+        <a className={styles.card}>
+          <h2 className={styles.loading}>Social</h2>
+          <RingLoader loading={isLoading} cssOverride={cssOverride} color={'#0070f3'} size={80} speedMultiplier={0.8} />
+          <h2 className={styles.secondLoading}>Github</h2>
+          <RingLoader loading={isLoading} cssOverride={cssOverride} color={'#0070f3'} size={80} speedMultiplier={0.8} />
+        </a>
+      </Link>
+    )
+  }
 
   return (
     <Link href={"/social_and_github"}>

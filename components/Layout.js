@@ -31,7 +31,7 @@ export function Layout({ children }) {
         <div className={styles.navMain}>
           { links.map(l => {
             return <Link key={l.name} href={l.path}>
-              <a className={(asPath === l.path) && styles.isActiveLink}>{l.name}</a>
+              <a className={(asPath === l.path) ? styles.isActiveLink : undefined}>{l.name}</a>
             </Link>
           }) }
         </div>
