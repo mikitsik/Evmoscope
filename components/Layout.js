@@ -26,7 +26,7 @@ export function Layout({ children }) {
         <meta name="description" content="Evmos explorer" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Logo />
+      <Logo width="345" height="90"/>
       <main className={styles.main}>
         <div className={styles.navMain}>
           { links.map(l => {
