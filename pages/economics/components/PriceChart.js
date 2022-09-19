@@ -1,20 +1,17 @@
-import { Layout } from '../components/Layout'
-import styles from '../styles/Home.module.css'
 import { Line } from 'react-chartjs-2'
-import { MarketData } from '../components/MarketData'
 import dayjs from 'dayjs'
 import { Chart as ChartJS } from 'chart.js/auto'
 
-const PriceChart = () => {
+export default function PriceChart({ priceData }) {
 
   const data = []
-  let onY = MarketData.prices[0][1]
-  for (let i = 0; i < MarketData.prices.length; i++) {
-    onY = MarketData.prices[i][1].toFixed(2)
+  let onY = priceData[0][1]
+  for (let i = 0; i < priceData.length; i++) {
+    onY = priceData[i][1].toFixed(2)
     data.push({x: i, y: onY})
   }
 
-  const delayBetweenPoints = 80
+  const delayBetweenPoints = 50
   const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y
   const animation = {
     x: {
@@ -49,13 +46,13 @@ const PriceChart = () => {
     let day
 
     tooltipItems.forEach(function(tooltipItem) {
-      day = dayjs(MarketData.prices[tooltipItem.parsed.x][0]).format('MMM D, YYYY')
+      day = dayjs(priceData[tooltipItem.parsed.x][0]).format('MMM D, YYYY')
     })
     return day
   }
 
   const chartData = {
-    labels: MarketData.prices.map(p => dayjs(p[0]).format('DD/MM/YYYY')),
+    labels: priceData.map(p => dayjs(p[0]).format('DD/MM/YYYY')),
     datasets: [{
       label: "  $",
       data: data,
@@ -119,20 +116,5 @@ const PriceChart = () => {
     }
   }
 
-
-  return (
-    <div className={styles.priceChart}>
-      <Line data={chartData} options={opt} type={'line'}/>
-    </div>
-  )
-}
-
-export default function Economics() {
-  return (
-    <Layout>
-      <div className={styles.pageContainer}>
-        <PriceChart />
-      </div>
-    </Layout>
-  )
+  return <Line data={chartData} options={opt} type={'line'}/>
 }
