@@ -11,11 +11,11 @@ export default function Home() {
   return (
     <Layout>
       <div className={styles.grid}>
-        <BlocksAndTxsCard />
         <EconomicsCard />
+        <BlocksAndTxsCard />
         <SmartContractsCard />
-        <IbcCard />
         <ValidatorsCard />
+        <IbcCard />
         <SocialAndGithubCard />
       </div>
     </Layout>

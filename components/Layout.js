@@ -6,13 +6,13 @@ import { useRouter } from 'next/router'
 import Footer from './Footer'
 
 const pages = [
-  {path: '/validators', name: 'Validators'},
+  {path: '/about', name: 'About'},
   {path: '/social_and_github', name: 'Social & Github'},
-  {path: '/smart_contracts', name: 'Smart Contracts'},
   {path: '/ibc', name: 'IBC'},
-  {path: '/economics', name: 'Economics'},
+  {path: '/validators', name: 'Validators'},
+  {path: '/smart_contracts', name: 'Smart Contracts'},
   {path: '/blocks_and_txs', name: 'Blocks & Txs'},
-  {path: '/about', name: 'About'}
+  {path: '/economics', name: 'Economics'}
 ]
 
 export function Layout({ children }) {
