@@ -99,14 +99,14 @@ export default function BlocksAndTxsCard() {
     <Link href={"/blocks_and_txs"}>
       <a className={styles.card}>
         <h2>Blocks</h2>
-        <p><span>height:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.height}</p>
-        <p><span>exec. time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.abt} sec</p>
-        <p><span>block time:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.time}</p>
+        <p><span>height:</span>{info.height}</p>
+        <p><span>exec. time:</span>{info.abt} sec</p>
+        <p><span>block time:</span>{info.time}</p>
         <h2 className={styles.secondHeader}>Transactions</h2>
-        <p><span>txs per block:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.txsPerBlock}</p>
-        <p><span>cosmos type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.cosmosTypeTxs}</p>
-        <p><span>ethereum type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.ethTypeTxs}</p>
-        <p><span>total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>--</p>
+        <p><span>txs per block:</span>{info.txsPerBlock}</p>
+        <p><span>cosmos type:</span>{info.cosmosTypeTxs}</p>
+        <p><span>ethereum type:</span>{info.ethTypeTxs}</p>
+        <p><span>total:</span>--</p>
       </a>
     </Link>
   )

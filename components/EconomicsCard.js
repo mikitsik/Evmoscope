@@ -87,13 +87,13 @@ export default function EconomicsCard() {
     <Link href={"/economics"}>
       <a className={styles.card}>
         <h2>Economics</h2>
-        <p><span>price:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>${economicsInfo.price}</p>
-        <p><span>apr:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.apr}%</p>
-        <p><span>circ. supply:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.circSupply} M</p>
-        <p><span>market cap:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>${economicsInfo.marketCap} M</p>
-        <p><span>market rank:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.rank}</p>
-        <p><span>cosmos ecosys. rank:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>2</p>
-        <p><span>markets:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{economicsInfo.evmosMarkets}</p>
+        <p><span>price:</span>${economicsInfo.price}</p>
+        <p><span>apr:</span>{economicsInfo.apr}%</p>
+        <p><span>circ. supply:</span>{economicsInfo.circSupply} M</p>
+        <p><span>market cap:</span>${economicsInfo.marketCap} M</p>
+        <p><span>market rank:</span>{economicsInfo.rank}</p>
+        <p><span>cosmos ecosys. rank:</span>2</p>
+        <p><span>markets:</span>{economicsInfo.evmosMarkets}</p>
       </a>
     </Link>
   )

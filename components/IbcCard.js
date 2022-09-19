@@ -54,8 +54,8 @@ export default function IbcCard() {
     <Link href={"/ibc"}>
       <a className={styles.card}>
         <h2>IBC</h2>
-        <p><span>open channels:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.openChannels}</p>
-        <p><span>open connections:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{info.openConnections}</p>
+        <p><span>open channels:</span>{info.openChannels}</p>
+        <p><span>open connections:</span>{info.openConnections}</p>
       </a>
     </Link>
   )
