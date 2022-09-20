@@ -63,15 +63,15 @@ export default function SocialAndGithubCard() {
     <Link href={"/social_and_github"}>
       <a className={styles.card}>
         <h2>Social</h2>
-        <p><span>voting proposals:</span>{socialAndDevInfo.votingProposals}</p>
-        <p><span>total proposals:</span>{socialAndDevInfo.totalProposals}</p>
-        <p><span>twitter followers:</span>{socialAndDevInfo.twitterFollowers}</p>
-        <p><span>telegram users:</span>{socialAndDevInfo.telegramUsers}</p>
+        <p><span>voting proposals</span>{socialAndDevInfo.votingProposals}</p>
+        <p><span>total proposals</span>{socialAndDevInfo.totalProposals}</p>
+        <p><span>twitter, followers</span>{socialAndDevInfo.twitterFollowers}</p>
+        <p><span>telegram, users</span>{socialAndDevInfo.telegramUsers}</p>
         <h2 className={styles.secondHeader}>Github</h2>
-        <p><span>forks:</span>{socialAndDevInfo.forks}</p>
-        <p><span>stars:</span>{socialAndDevInfo.stars}</p>
-        <p><span>issues:</span>{socialAndDevInfo.issues}</p>
-        <p><span>contributors:</span>{socialAndDevInfo.contributors}</p>
+        <p><span>forks</span>{socialAndDevInfo.forks}</p>
+        <p><span>stars</span>{socialAndDevInfo.stars}</p>
+        <p><span>issues</span>{socialAndDevInfo.issues}</p>
+        <p><span>contributors</span>{socialAndDevInfo.contributors}</p>
       </a>
     </Link>
   )

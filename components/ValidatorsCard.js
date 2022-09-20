@@ -63,13 +63,13 @@ export default function ValidatorsCard() {
     <Link href={"/validators"}>
       <a className={styles.card}>
         <h2>Validators</h2>
-        <p><span>active:</span>{info.active}</p>
-        <p><span>min bond with:</span>{info.minBond}</p>
-        <p><span>restake enabled on:</span>{info.restakeEnabeled}</p>
-        <p><span>additional rewards on:</span>{info.additionalRewards}</p>
-        <p><span>jailed:</span>{info.jailed}</p>
-        <p><span>max bond jailed:</span>{info.maxBondJailed}</p>
-        <p><span>total:</span>{info.total}</p>
+        <p><span>active</span>{info.active}</p>
+        <p><span>min bond with</span>{info.minBond}</p>
+        <p><span>restake enabled on</span>{info.restakeEnabeled}</p>
+        <p><span>additional rewards on</span>{info.additionalRewards}</p>
+        <p><span>jailed</span>{info.jailed}</p>
+        <p><span>max bond jailed</span>{info.maxBondJailed}</p>
+        <p><span>total</span>{info.total}</p>
       </a>
     </Link>
   )

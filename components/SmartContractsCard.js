@@ -6,11 +6,11 @@ export default function SmartContractsCard() {
     <Link href={"/smart_contracts"}>
       <a className={styles.card}>
         <h2>Smart Contracts</h2>
-        <p><span>total:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>--</p>
-        <p><span>trading volume:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>--</p>
-        <p><span>top new:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>--</p>
-        <p><span>monthly active:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>--</p>
-        <p><span>dapps:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>--</p>
+        <p><span>total</span>--</p>
+        <p><span>trading volume</span>--</p>
+        <p><span>top new</span>--</p>
+        <p><span>monthly active</span>--</p>
+        <p><span>dapps</span>--</p>
       </a>
     </Link>
   )

@@ -2,6 +2,9 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import RingLoader from "react-spinners/RingLoader"
+import Image from 'next/image'
+import { aprAndApy } from '../pages/economics/components/aprAndApy'
+import EvmosIcon from './EvmosIcon'
 
 export default function EconomicsCard() {
   const [isLoading, setIsLoading] = useState(true)
@@ -87,13 +90,14 @@ export default function EconomicsCard() {
     <Link href={"/economics"}>
       <a className={styles.card}>
         <h2>Economics</h2>
-        <p><span>price:</span>${economicsInfo.price}</p>
-        <p><span>apr:</span>{economicsInfo.apr}%</p>
-        <p><span>circ. supply:</span>{economicsInfo.circSupply} M</p>
-        <p><span>market cap:</span>${economicsInfo.marketCap} M</p>
-        <p><span>market rank:</span>{economicsInfo.rank}</p>
-        <p><span>cosmos ecosys. rank:</span>2</p>
-        <p><span>markets:</span>{economicsInfo.evmosMarkets}</p>
+        <p><span>price, $</span>{economicsInfo.price}</p>
+        <p><span>apr, %</span>{aprAndApy[aprAndApy.length - 1][1]}</p>
+        <p><span>apy, %<span className={styles.iconEvmos}></span></span>{aprAndApy[aprAndApy.length - 1][2]}</p>
+        <p><span>circ. supply, <EvmosIcon width={20} height={20} /> M</span>{economicsInfo.circSupply}</p>
+        <p><span>market cap, $ M</span>{economicsInfo.marketCap}</p>
+        <p><span>market rank</span>{economicsInfo.rank}</p>
+        <p><span>cosmos ecosys. rank</span>2</p>
+        <p><span>markets</span>{economicsInfo.evmosMarkets}</p>
       </a>
     </Link>
   )
