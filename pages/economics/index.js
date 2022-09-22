@@ -160,29 +160,27 @@ export default function Economics() {
       <>
         <h3>{tickersCount} available markets</h3>
         <div className={styles.marketsContainer}>
+          <div className={styles.markesItem}>
+            <div>Exchange</div>
+            <div>Pair</div>
+            <div>Price</div>
+            <div>24h volume</div>
+          </div>
           {tickers.map((t, index) => {
             return (
-              <div className={styles.markesItem} key={index}>
-                <div>
-                  {t.market.name}
+              <a className={styles.markesItem}
+                href={t.trade_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={index}
+              >
+                <div>{t.market.name}</div>
+                <div className={styles.markesItemPair}>
+                  <span>{t.coin_id}</span><span>/{t.target_coin_id}</span>
                 </div>
-                <div>
-                  {t.target_coin_id}
-                </div>
-                <div>
-                  {t.converted_last.usd}
-                </div>
-                <div>
-                  {t.converted_volume.usd}
-                </div>
-                <div className={styles.marketsItemButton}>
-                  <a
-                    href={t.trade_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >Trade</a>
-                </div>
-              </div>
+                <div>${t.converted_last.usd}</div>
+                <div>${t.converted_volume.usd.toFixed()}</div>
+              </a>
             )
           })}
 

@@ -289,11 +289,16 @@ h4.aprApyTitle {
 .markesItem {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 10px 20px;
   border: 1px solid black;
   border-radius: 7px;
   margin: 5px 0;
+  cursor: pointer;
+}
+
+.markesItem:first-child {
+  border: none;
+  margin: 5px 0 10px;
 }
 
 .markesItem div {
@@ -301,13 +306,29 @@ h4.aprApyTitle {
   margin: 0 10px;
 }
 
-.marketsItemButton {
+.markesItem:hover {
+  border: 2px solid #0070f3;
+  color: #0070f3;
+}
+
+.markesItem:first-child:hover {
+  border: none;
+  margin: 5px 0 10px;
+  color: black;
+}
+
+.markesItemPair {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* .marketsItemButton {
   flex-basis: auto !important;
   align-self: center;
   text-align: center;
-}
+} */
 
-.marketsItemButton a {
+/* .marketsItemButton a {
   display: inline-block;
   margin: 0 auto;
   padding: 6px 17px;
@@ -315,12 +336,12 @@ h4.aprApyTitle {
   border: 1px solid black;
   border-radius: 7px;
   cursor: pointer;
-}
+} */
 
-.marketsItemButton a:hover {
+/* .marketsItemButton a:hover {
   color: #0070f3;
   border-color: #0070f3;
-}
+} */
 
 .logo {
   height: 1em;
@@ -444,11 +465,19 @@ a:hover .logoSvgIcon {
   .main {
     min-height: 60vh;
   }
-}
 
-@media (max-width: 450px) {
   .container {
     padding: 0;
+  }
+
+  .pageContainer {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .markesItem {
+    padding: 5px;
   }
 }
 
