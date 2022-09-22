@@ -274,6 +274,54 @@ h4.aprApyTitle {
   border-color: #0070f3;
 }
 
+.markets h3 {
+  text-align: center;
+  font-weight: 500;
+  margin: 0 0 30px 0;
+}
+
+.marketsContainer {
+  padding: 5px 10px;
+  border: 1px solid black;
+  border-radius: 7px;
+}
+
+.markesItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border: 1px solid black;
+  border-radius: 7px;
+  margin: 5px 0;
+}
+
+.markesItem div {
+  flex-basis: 220px;
+  margin: 0 10px;
+}
+
+.marketsItemButton {
+  flex-basis: auto !important;
+  align-self: center;
+  text-align: center;
+}
+
+.marketsItemButton a {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 6px 17px;
+  font-size: 0.9rem;
+  border: 1px solid black;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.marketsItemButton a:hover {
+  color: #0070f3;
+  border-color: #0070f3;
+}
+
 .logo {
   height: 1em;
 }

@@ -127,13 +127,19 @@ const PriceChart = ({ priceData }) => {
 
 export default function Economics() {
   const [priceData, setPriceData] = useState([])
+  const [evmosData, setEvmosData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     async function load() {
-      const response = await fetch('https://api.coingecko.com/api/v3/coins/evmos/market_chart?vs_currency=usd&days=100')
-      const json = await response.json()
-      setPriceData(json.prices)
+      const marketChart = await fetch('https://api.coingecko.com/api/v3/coins/evmos/market_chart?vs_currency=usd&days=100')
+      const marketChartJson = await marketChart.json()
+
+      const coingeckoEvmosData = await fetch('https://api.coingecko.com/api/v3/coins/evmos')
+      const coingeckoEvmosDataJson = await coingeckoEvmosData.json()
+
+      setPriceData(marketChartJson.prices)
+      setEvmosData(coingeckoEvmosDataJson)
       setIsLoading(false)
     }
     load()
@@ -142,6 +148,47 @@ export default function Economics() {
   const cssOverride = {
     display: "block",
     margin: "0 auto"
+  }
+
+  const Markets = () => {
+    const tickersCount = evmosData.tickers.length
+    const tickers = evmosData.tickers
+    console.log(tickers.length)
+
+
+    return (
+      <>
+        <h3>{tickersCount} available markets</h3>
+        <div className={styles.marketsContainer}>
+          {tickers.map((t, index) => {
+            return (
+              <div className={styles.markesItem} key={index}>
+                <div>
+                  {t.market.name}
+                </div>
+                <div>
+                  {t.target_coin_id}
+                </div>
+                <div>
+                  {t.converted_last.usd}
+                </div>
+                <div>
+                  {t.converted_volume.usd}
+                </div>
+                <div className={styles.marketsItemButton}>
+                  <a
+                    href={t.trade_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >Trade</a>
+                </div>
+              </div>
+            )
+          })}
+
+        </div>
+      </>
+    )
   }
 
   return (
@@ -158,7 +205,6 @@ export default function Economics() {
                 </h3>
                 <PriceChart priceData={priceData}/>
               </div>
-
             }
           </div>
           <div className={styles.aprApyContainer}>
@@ -169,6 +215,12 @@ export default function Economics() {
               <ApyChart />
             </div>
           </div>
+        </div>
+        <div className={styles.markets}>
+          {isLoading ?
+            <RingLoader loading={isLoading} cssOverride={cssOverride} color={'#0070f3'} size={80} speedMultiplier={0.8} /> :
+            <Markets />
+          }
         </div>
       </div>
     </Layout>
