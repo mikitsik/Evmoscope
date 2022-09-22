@@ -20,7 +20,7 @@ export default function BlocksAndTxsCard() {
 
     const height = currentBlock.result.response.last_block_height
 
-    const currentBlockAndTxs = await fetch(`https://evmos-api.polkachu.com/cosmos/tx/v1beta1/txs/block/${height}`)
+    const currentBlockAndTxs = await fetch(`https://rest.bd.evmos.org:1317/cosmos/tx/v1beta1/txs/block/${height}`)
       .then((response) => {
         if (response.ok) return response.json()
       })

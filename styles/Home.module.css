@@ -346,6 +346,21 @@ h4.aprApyTitle {
   flex-wrap: wrap;
 }
 
+.underPriceChartSection {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.underPriceChartSection h4 {
+  margin: 25px 0 10px;
+  font-weight: 500;
+}
+
+.underPriceChartSubtitle {
+  font-size: 1.3rem;
+}
+
 /* .marketsItemButton {
   flex-basis: auto !important;
   align-self: center;

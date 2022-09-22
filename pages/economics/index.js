@@ -128,8 +128,9 @@ const PriceChart = ({ priceData }) => {
 
 export default function Economics() {
   const [priceData, setPriceData] = useState([])
-  const [evmosData, setEvmosData] = useState([])
+  const [evmosData, setEvmosData] = useState({})
   const [isLoading, setIsLoading] = useState(true)
+  const [inflationRate, setInflationRate] = useState([])
 
   useEffect(() => {
     async function load() {
@@ -139,8 +140,12 @@ export default function Economics() {
       const coingeckoEvmosData = await fetch('https://api.coingecko.com/api/v3/coins/evmos')
       const coingeckoEvmosDataJson = await coingeckoEvmosData.json()
 
+      const inflationData = await fetch('https://rest.bd.evmos.org:1317/evmos/inflation/v1/inflation_rate')
+      const inflationDataJson = await inflationData.json()
+
       setPriceData(marketChartJson.prices)
       setEvmosData(coingeckoEvmosDataJson)
+      setInflationRate(parseFloat(inflationDataJson.inflation_rate).toFixed(2))
       setIsLoading(false)
     }
     load()
@@ -206,10 +211,36 @@ export default function Economics() {
               <RingLoader loading={isLoading} cssOverride={cssOverride} color={'#0070f3'} size={80} speedMultiplier={0.8} /> :
               <div>
                 <h3 className={styles.priceTitle}>
-                <EvmosIcon width={20} height={20} />&nbsp;
+                  <EvmosIcon width={20} height={20} />&nbsp;
                   price ${priceData[priceData.length - 1][1].toFixed(2)}
                 </h3>
                 <PriceChart priceData={priceData}/>
+                <div className={styles.underPriceChartSection}>
+                  <div>
+                    <h4>Epoch mint provision</h4>
+                    <div className={styles.underPriceChartSubtitle}>
+                      <EvmosIcon width={17} height={17} />&nbsp;&nbsp;847602.7
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Inflation</h4>
+                    <div className={styles.underPriceChartSubtitle}>
+                      %&nbsp;{inflationRate}
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Mint denom</h4>
+                    <div className={styles.underPriceChartSubtitle}>
+                      aevmos
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Mint decimal</h4>
+                    <div className={styles.underPriceChartSubtitle}>
+                      18
+                    </div>
+                  </div>
+                </div>
               </div>
             }
           </div>

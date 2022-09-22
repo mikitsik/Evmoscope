@@ -16,6 +16,7 @@ export default function About() {
           <li>develop software for the best data managing, e.g. light-weight backend server or middleware</li>
           <li>add postgresql and redis for the best analizing and quick responding</li>
           <li>implement graphql or ruby hotwire to avoid information garbage</li>
+          <li>and many more!</li>
         </ul>
       </div>
     </Layout>
