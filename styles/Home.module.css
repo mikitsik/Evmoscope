@@ -172,22 +172,75 @@
   line-height: 1.7;
 }
 
-/* .priceChart {
-  max-width: 700px;
-  max-height:500px;
-  margin: 0 auto;
+.economicsChartsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.aprApyContainer {
+  flex: 0 0 auto;
+  width: 30%;
+}
+
+.priceChart {
+  flex: 0 0 auto;
+  width: 60%;
 }
 
 .aprChart {
-  max-width: 220px;
-  max-height:200px;
-  margin: 0 auto;
-} */
+  /* max-height: 250px;
+  flex: 0 0 auto;
+  width: 23%; */
+}
 
-/* .economicsChartsContainer {
-  display: flex;
-  flex-wrap: wrap;
-} */
+.apyChart {
+  /* max-height: 250px;
+  flex: 0 0 auto;
+  width: 23%; */
+}
+
+@media (max-width: 730px) {
+  .economicsChartsContainer {
+    display: block;
+  }
+
+  .priceChart {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .aprApyContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .aprChart {
+    flex: 0 0 auto;
+    width: 45%;
+  }
+
+  .apyChart {
+    flex: 0 0 auto;
+    width: 45%;
+  }
+}
+
+@media (max-width: 730px) {
+  .aprApyContainer {
+    display: block;
+  }
+
+  .aprChart {
+    width: 100%;
+  }
+
+  .apyChart {
+    width: 100%;
+  }
+}
 
 .logo {
   height: 1em;

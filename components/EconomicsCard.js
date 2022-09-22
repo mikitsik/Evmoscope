@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import styles from '../styles/Home.module.css'
 import RingLoader from "react-spinners/RingLoader"
 import Image from 'next/image'
-import { aprAndApy } from '../pages/economics/components/aprAndApy'
+import { aprAndApy } from '../components/aprAndApy'
 import EvmosIcon from './EvmosIcon'
 
 export default function EconomicsCard() {

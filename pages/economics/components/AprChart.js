@@ -1,6 +1,6 @@
 import { Line } from 'react-chartjs-2'
 import { Chart as ChartJS } from 'chart.js/auto'
-import { aprAndApy } from './aprAndApy'
+import { aprAndApy } from '../../../components/aprAndApy'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 import dayjs from 'dayjs'
 
@@ -73,8 +73,9 @@ export default function AprChart() {
       legend: false,
       title: {
         display: true,
+        text: "APR chart last 80 days",
         font: {
-          size: 20,
+          size: 18,
           family: "'-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'",
           weight: 400
         },

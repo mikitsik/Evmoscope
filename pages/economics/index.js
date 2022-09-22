@@ -75,6 +75,7 @@ const PriceChart = ({ priceData }) => {
       legend: false,
       title: {
         display: true,
+        text: "Evmos $USD price chart last 100 days",
         font: {
           size: 18,
           family: "'-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'",
@@ -83,7 +84,7 @@ const PriceChart = ({ priceData }) => {
         color: 'black'
       },
       tooltip: {
-        backgroundColor: '#3389eb',
+        backgroundColor: 'rgba(0, 112, 243, 0.6)',
         bodySpacing: 3,
         callbacks: {
           title: tooltipTitle,
@@ -152,11 +153,11 @@ export default function Economics() {
               <PriceChart priceData={priceData}/>
             }
           </div>
-          <div>
+          <div className={styles.aprApyContainer}>
             <div className={styles.aprChart}>
               <AprChart />
             </div>
-            <div className={styles.aprChart}>
+            <div className={styles.apyChart}>
               <ApyChart />
             </div>
           </div>

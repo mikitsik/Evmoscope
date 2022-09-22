@@ -1,6 +1,6 @@
 import { Line } from 'react-chartjs-2'
 import { Chart as ChartJS } from 'chart.js/auto'
-import { aprAndApy } from './aprAndApy'
+import { aprAndApy } from '../../../components/aprAndApy'
 
 export default function ApyChart() {
   const apy = []
@@ -69,15 +69,16 @@ export default function ApyChart() {
       legend: false,
       title: {
         display: true,
+        text: "APY chart last 80 days",
         font: {
-          size: 20,
+          size: 18,
           family: "'-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'",
           weight: 400
         },
         color: 'black'
       },
       tooltip: {
-        backgroundColor: '#3389eb',
+        backgroundColor: 'rgba(0, 112, 243, 0.6)',
         bodySpacing: 4,
         callbacks: {
           title: tooltipTitle,
