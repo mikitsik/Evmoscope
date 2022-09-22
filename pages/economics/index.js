@@ -159,10 +159,8 @@ export default function Economics() {
   const Markets = () => {
     const tickersCount = evmosData.tickers.length
     const tickers = evmosData.tickers
-    console.log(tickers.length)
-
-  const [isExpand, setIsExpand] = useState(false)
-  const toggleExpand = () => {
+    const [isExpand, setIsExpand] = useState(false)
+    const toggleExpand = () => {
     setIsExpand((prevState) => { return !prevState})
   }
 
