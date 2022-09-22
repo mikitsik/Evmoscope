@@ -118,6 +118,13 @@ export default function ApyChart() {
         APY {aprAndApy[aprAndApy.length - 1][2]}%
       </h4>
       <Line data={chartData} options={opt} type={'line'}/>
+      <div className={styles.stakeChartButton}>
+        <a
+          href="https://restake.app/evmos"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Stake with APY</a>
+      </div>
     </div>
   )
 }

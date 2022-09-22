@@ -129,6 +129,13 @@ export default function AprChart() {
         APR {aprAndApy[aprAndApy.length - 1][1]}%
       </h4>
       <Line data={chartData} plugins={plugins} options={opt} type={'line'}/>
+      <div className={styles.stakeChartButton}>
+        <a
+          href="https://wallet.keplr.app/chains/evmos"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Stake with APR</a>
+      </div>
     </div>
   )
 }
