@@ -7,6 +7,7 @@ import dayjs from 'dayjs'
 import { Chart as ChartJS } from 'chart.js/auto'
 import AprChart from './components/AprChart'
 import ApyChart from './components/ApyChart'
+import EvmosIcon from '../../components/EvmosIcon'
 
 const PriceChart = ({ priceData }) => {
   const data = []
@@ -14,7 +15,7 @@ const PriceChart = ({ priceData }) => {
     data.push({x: i, y: priceData[i][1].toFixed(2)})
   }
 
-  const delayBetweenPoints = 50
+  const delayBetweenPoints = 30
   const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y
   const animation = {
     x: {
@@ -75,11 +76,11 @@ const PriceChart = ({ priceData }) => {
       legend: false,
       title: {
         display: true,
-        text: "Evmos $USD price chart last 100 days",
+        text: "last 100 days chart",
         font: {
-          size: 18,
+          size: 16,
           family: "'-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'",
-          weight: 400
+          weight: 300
         },
         color: 'black'
       },
@@ -150,7 +151,14 @@ export default function Economics() {
           <div className={styles.priceChart}>
             {isLoading ?
               <RingLoader loading={isLoading} cssOverride={cssOverride} color={'#0070f3'} size={80} speedMultiplier={0.8} /> :
-              <PriceChart priceData={priceData}/>
+              <div>
+                <h3 className={styles.priceTitle}>
+                <EvmosIcon width={20} height={20} />&nbsp;
+                  price ${priceData[priceData.length - 1][1].toFixed(2)}
+                </h3>
+                <PriceChart priceData={priceData}/>
+              </div>
+
             }
           </div>
           <div className={styles.aprApyContainer}>

@@ -2,7 +2,7 @@ import { Line } from 'react-chartjs-2'
 import { Chart as ChartJS } from 'chart.js/auto'
 import { aprAndApy } from '../../../components/aprAndApy'
 import ChartDataLabels from 'chartjs-plugin-datalabels'
-import dayjs from 'dayjs'
+import styles from '../../../styles/Home.module.css'
 
 export default function AprChart() {
   const apr = []
@@ -10,7 +10,7 @@ export default function AprChart() {
     apr.push({x: i, y: aprAndApy[i][1]})
   }
 
-  const delayBetweenPoints = apr.length
+  const delayBetweenPoints = 40
   const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y
   const animation = {
     x: {
@@ -73,11 +73,11 @@ export default function AprChart() {
       legend: false,
       title: {
         display: true,
-        text: "APR chart last 80 days",
+        text: "last 80 days chart",
         font: {
-          size: 18,
+          size: 16,
           family: "'-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'",
-          weight: 400
+          weight: 300
         },
         color: 'black'
       },
@@ -124,8 +124,11 @@ export default function AprChart() {
   }
 
   return (
-    <>
+    <div>
+      <h4 className={styles.aprApyTitle}>
+        APR {aprAndApy[aprAndApy.length - 1][1]}%
+      </h4>
       <Line data={chartData} plugins={plugins} options={opt} type={'line'}/>
-    </>
+    </div>
   )
 }
