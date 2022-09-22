@@ -284,6 +284,30 @@ h4.aprApyTitle {
   padding: 5px 10px;
   border: 1px solid black;
   border-radius: 7px;
+  height: 300px;
+  overflow: auto;
+}
+
+.marketsContainerExpand {
+  height: auto;
+}
+
+.marketsExpand {
+  text-align: center;
+}
+
+.marketsExpand span {
+  border: 1px solid black;
+  padding: 10px 30px;
+  position: relative;
+  top: 10px;
+  border-radius: 0 0 7px 7px;
+  cursor: pointer;
+}
+
+.marketsExpand span:hover {
+  color: #0070f3;
+  border-color: #0070f3;
 }
 
 .markesItem {

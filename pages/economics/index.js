@@ -8,6 +8,7 @@ import { Chart as ChartJS } from 'chart.js/auto'
 import AprChart from './components/AprChart'
 import ApyChart from './components/ApyChart'
 import EvmosIcon from '../../components/EvmosIcon'
+import classNames from 'classnames'
 
 const PriceChart = ({ priceData }) => {
   const data = []
@@ -155,11 +156,15 @@ export default function Economics() {
     const tickers = evmosData.tickers
     console.log(tickers.length)
 
+  const [isExpand, setIsExpand] = useState(false)
+  const toggleExpand = () => {
+    setIsExpand((prevState) => { return !prevState})
+  }
 
     return (
       <>
         <h3>{tickersCount} available markets</h3>
-        <div className={styles.marketsContainer}>
+        <div className={classNames(styles.marketsContainer, { [styles.marketsContainerExpand]: isExpand })}>
           <div className={styles.markesItem}>
             <div>Exchange</div>
             <div>Pair</div>
@@ -184,6 +189,9 @@ export default function Economics() {
             )
           })}
 
+        </div>
+        <div className={styles.marketsExpand}>
+          <span onClick={() => toggleExpand()}>{isExpand ? 'Compress' : 'Expand'}</span>
         </div>
       </>
     )
