@@ -8,11 +8,7 @@ export default function BlocksAndTxsCard() {
   const [info, setInfo] = useState({})
   const [isLoading, setIsLoading] = useState(true)
   async function load() {
-    const currentBlock = await fetch('https://tendermint.bd.evmos.org:26657/abci_info?', {
-      method: 'GET',
-      headers: {
-      accept: 'application/json',
-    }})
+    const currentBlock = await fetch('https://tendermint.bd.evmos.org:26657/abci_info?')
       .then((response) => {
         if (response.ok) return response.json()
       })
@@ -24,11 +20,7 @@ export default function BlocksAndTxsCard() {
 
     const height = currentBlock.result.response.last_block_height
 
-    const currentBlockAndTxs = await fetch(`https://evmos-api.polkachu.com/cosmos/tx/v1beta1/txs/block/${height}`, {
-      method: 'GET',
-      headers: {
-      accept: 'application/json',
-    }})
+    const currentBlockAndTxs = await fetch(`https://evmos-api.polkachu.com/cosmos/tx/v1beta1/txs/block/${height}`)
       .then((response) => {
         if (response.ok) return response.json()
       })
@@ -44,11 +36,7 @@ export default function BlocksAndTxsCard() {
     const ethTxs = currentBlockAndTxs.txs.filter(i => /MsgEthereumTx/.exec(i.body.messages[0]['@type'])).length
     const cosmosTxs = txsPerBlock - ethTxs
 
-    const previousBlock = await fetch(`https://tendermint.bd.evmos.org:26657/block?height=${previousBlockHeight}`, {
-      method: 'GET',
-      headers: {
-      accept: 'application/json',
-    }})
+    const previousBlock = await fetch(`https://tendermint.bd.evmos.org:26657/block?height=${previousBlockHeight}`)
       .then((response) => {
         if (response.ok) return response.json()
       })

@@ -7,11 +7,7 @@ export default function ValidatorsCard() {
   const [info, setInfo] = useState({})
   const [isLoading, setIsLoading] = useState(true)
   async function load() {
-    const validators = await fetch('https://evmos-api.polkachu.com/cosmos/staking/v1beta1/validators?pagination.limit=500', {
-      method: 'GET',
-      headers: {
-      accept: 'application/json',
-    }})
+    const validators = await fetch('https://evmos-api.polkachu.com/cosmos/staking/v1beta1/validators?pagination.limit=500')
       .then((response) => {
         if (response.ok) return response.json()
       })
