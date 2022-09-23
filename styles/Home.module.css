@@ -277,15 +277,21 @@ h4.aprApyTitle {
 .markets h3 {
   text-align: center;
   font-weight: 500;
-  margin: 0 0 30px 0;
+  margin: 30px 0;
 }
 
 .marketsContainer {
-  padding: 5px 10px;
-  border: 1px solid black;
-  border-radius: 7px;
-  height: 300px;
+  padding: 5px 0;
+  border-bottom: 1px solid black;
+  height: 293px;
   overflow: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.marketsContainer::-webkit-scrollbar {
+  display: none;
 }
 
 .marketsContainerExpand {
@@ -314,15 +320,14 @@ h4.aprApyTitle {
   display: flex;
   align-items: center;
   padding: 10px 20px;
-  border: 1px solid black;
-  border-radius: 7px;
-  margin: 5px 0;
+  border-top: 1px solid black;
   cursor: pointer;
 }
 
 .markesItem:first-child {
   border: none;
   margin: 5px 0 10px;
+  font-weight: 500;
 }
 
 .markesItem div {
@@ -331,7 +336,7 @@ h4.aprApyTitle {
 }
 
 .markesItem:hover {
-  border: 2px solid #0070f3;
+  border-color: #0070f3;
   color: #0070f3;
 }
 
@@ -348,13 +353,19 @@ h4.aprApyTitle {
 
 .underPriceChartSection {
   display: flex;
+  flex-wrap: wrap;
   text-align: center;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 .underPriceChartSection h4 {
   margin: 25px 0 10px;
   font-weight: 500;
+}
+
+.underPriceChartSection > div {
+  margin: 0 20px;
 }
 
 .underPriceChartSubtitle {

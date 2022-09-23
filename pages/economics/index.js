@@ -127,25 +127,38 @@ const PriceChart = ({ priceData }) => {
 }
 
 export default function Economics() {
-  const [priceData, setPriceData] = useState([])
-  const [evmosData, setEvmosData] = useState({})
+
+  const [economicsData, setEconomicsData] = useState({
+    priceData: [],
+    evmosData: {},
+    inflationRate: [],
+    sircSupply: 0,
+    bondedTokens: 0
+  })
   const [isLoading, setIsLoading] = useState(true)
-  const [inflationRate, setInflationRate] = useState([])
 
   useEffect(() => {
     async function load() {
       const marketChart = await fetch('https://api.coingecko.com/api/v3/coins/evmos/market_chart?vs_currency=usd&days=100')
       const marketChartJson = await marketChart.json()
-
       const coingeckoEvmosData = await fetch('https://api.coingecko.com/api/v3/coins/evmos')
       const coingeckoEvmosDataJson = await coingeckoEvmosData.json()
-
       const inflationData = await fetch('https://rest.bd.evmos.org:1317/evmos/inflation/v1/inflation_rate')
       const inflationDataJson = await inflationData.json()
+      const circSupplyData = await fetch('https://evmos-api.polkachu.com/evmos/inflation/v1/circulating_supply')
+      const circSupplyDataJson = await circSupplyData.json()
+      const bondedData = await fetch('https://rest.bd.evmos.org:1317/cosmos/staking/v1beta1/pool')
+      const bondedDataJson = await bondedData.json()
 
-      setPriceData(marketChartJson.prices)
-      setEvmosData(coingeckoEvmosDataJson)
-      setInflationRate(parseFloat(inflationDataJson.inflation_rate).toFixed(2))
+
+      setEconomicsData({
+        priceData: marketChartJson.prices,
+        evmosData: coingeckoEvmosDataJson,
+        inflationRate: parseFloat(inflationDataJson.inflation_rate).toFixed(2),
+        sircSupply: (parseFloat(circSupplyDataJson.circulating_supply.amount) / 10**18).toFixed(),
+        bondedTokens: (parseFloat(bondedDataJson.pool.bonded_tokens) / 10**18).toFixed()
+      })
+
       setIsLoading(false)
     }
     load()
@@ -157,8 +170,8 @@ export default function Economics() {
   }
 
   const Markets = () => {
-    const tickersCount = evmosData.tickers.length
-    const tickers = evmosData.tickers
+    const tickersCount = economicsData.evmosData.tickers.length
+    const tickers = economicsData.evmosData.tickers
     const [isExpand, setIsExpand] = useState(false)
     const toggleExpand = () => {
     setIsExpand((prevState) => { return !prevState})
@@ -210,9 +223,9 @@ export default function Economics() {
               <div>
                 <h3 className={styles.priceTitle}>
                   <EvmosIcon width={20} height={20} />&nbsp;
-                  price ${priceData[priceData.length - 1][1].toFixed(2)}
+                  price ${economicsData.priceData[economicsData.priceData.length - 1][1].toFixed(2)}
                 </h3>
-                <PriceChart priceData={priceData}/>
+                <PriceChart priceData={economicsData.priceData}/>
                 <div className={styles.underPriceChartSection}>
                   <div>
                     <h4>Epoch mint provision</h4>
@@ -223,7 +236,7 @@ export default function Economics() {
                   <div>
                     <h4>Inflation</h4>
                     <div className={styles.underPriceChartSubtitle}>
-                      %&nbsp;{inflationRate}
+                      %&nbsp;{economicsData.inflationRate}
                     </div>
                   </div>
                   <div>
@@ -236,6 +249,26 @@ export default function Economics() {
                     <h4>Mint decimal</h4>
                     <div className={styles.underPriceChartSubtitle}>
                       18
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Circ. supply</h4>
+                    <div className={styles.underPriceChartSubtitle}>
+                      <EvmosIcon width={17} height={17} />&nbsp; M,&nbsp;
+                      {(economicsData.sircSupply / 10**6).toFixed(1)}
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Bonded tokens</h4>
+                    <div className={styles.underPriceChartSubtitle}>
+                      <EvmosIcon width={17} height={17} />&nbsp; M,&nbsp;
+                      {(economicsData.bondedTokens / 10**6).toFixed(1)}
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Staking ratio</h4>
+                    <div className={styles.underPriceChartSubtitle}>
+                      % {(economicsData.bondedTokens / economicsData.sircSupply * 100).toFixed(2) }
                     </div>
                   </div>
                 </div>
