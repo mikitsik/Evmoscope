@@ -149,6 +149,8 @@ export default function Economics() {
       const circSupplyDataJson = await circSupplyData.json()
       const bondedData = await fetch('https://rest.bd.evmos.org:1317/cosmos/staking/v1beta1/pool')
       const bondedDataJson = await bondedData.json()
+      const communityPoolData = await fetch('https://rest.bd.evmos.org:1317/cosmos/distribution/v1beta1/community_pool')
+      const communityPoolJson = await communityPoolData.json()
 
 
       setEconomicsData({
@@ -156,7 +158,8 @@ export default function Economics() {
         evmosData: coingeckoEvmosDataJson,
         inflationRate: parseFloat(inflationDataJson.inflation_rate).toFixed(2),
         sircSupply: (parseFloat(circSupplyDataJson.circulating_supply.amount) / 10**18).toFixed(),
-        bondedTokens: (parseFloat(bondedDataJson.pool.bonded_tokens) / 10**18).toFixed()
+        bondedTokens: (parseFloat(bondedDataJson.pool.bonded_tokens) / 10**18).toFixed(),
+        communityPool: (parseFloat(communityPoolJson.pool[0].amount) / 10**18).toFixed()
       })
 
       setIsLoading(false)
@@ -228,9 +231,23 @@ export default function Economics() {
                 <PriceChart priceData={economicsData.priceData}/>
                 <div className={styles.underPriceChartSection}>
                   <div>
-                    <h4>Epoch mint provision</h4>
+                    <h4>Market cap</h4>
                     <div className={styles.underPriceChartSubtitle}>
-                      <EvmosIcon width={17} height={17} />&nbsp;&nbsp;847602.7
+                      <EvmosIcon width={17} height={17} />&nbsp; M,&nbsp;
+                      {(economicsData.evmosData.market_data.market_cap.usd / 10**6).toFixed(1)}
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Market cap rank</h4>
+                    <div className={styles.underPriceChartSubtitle}>
+                      #{economicsData.evmosData.market_cap_rank}
+                    </div>
+                  </div>
+                  <div>
+                    <h4>Circ. supply</h4>
+                    <div className={styles.underPriceChartSubtitle}>
+                      <EvmosIcon width={17} height={17} />&nbsp; M,&nbsp;
+                      {(economicsData.sircSupply / 10**6).toFixed(1)}
                     </div>
                   </div>
                   <div>
@@ -240,22 +257,9 @@ export default function Economics() {
                     </div>
                   </div>
                   <div>
-                    <h4>Mint denom</h4>
+                    <h4>Epoch mint provision</h4>
                     <div className={styles.underPriceChartSubtitle}>
-                      aevmos
-                    </div>
-                  </div>
-                  <div>
-                    <h4>Mint decimal</h4>
-                    <div className={styles.underPriceChartSubtitle}>
-                      18
-                    </div>
-                  </div>
-                  <div>
-                    <h4>Circ. supply</h4>
-                    <div className={styles.underPriceChartSubtitle}>
-                      <EvmosIcon width={17} height={17} />&nbsp; M,&nbsp;
-                      {(economicsData.sircSupply / 10**6).toFixed(1)}
+                      <EvmosIcon width={17} height={17} />&nbsp;&nbsp;847602
                     </div>
                   </div>
                   <div>
@@ -271,6 +275,13 @@ export default function Economics() {
                       % {(economicsData.bondedTokens / economicsData.sircSupply * 100).toFixed(2) }
                     </div>
                   </div>
+                  <div>
+                    <h4>Community pool</h4>
+                    <div className={styles.underPriceChartSubtitle}>
+                      <EvmosIcon width={17} height={17} />&nbsp; M,&nbsp;
+                      {(economicsData.communityPool / 10**6).toFixed(1)}
+                    </div>
+                  </div>
                 </div>
               </div>
             }
@@ -284,11 +295,27 @@ export default function Economics() {
             </div>
           </div>
         </div>
-        <div className={styles.markets}>
-          {isLoading ?
-            <RingLoader loading={isLoading} cssOverride={cssOverride} color={'#0070f3'} size={80} speedMultiplier={0.8} /> :
-            <Markets />
-          }
+        <div className={styles.marketsSection}>
+          <div className={styles.markets}>
+            {isLoading ?
+              <RingLoader loading={isLoading} cssOverride={cssOverride} color={'#0070f3'} size={80} speedMultiplier={0.8} /> :
+              <Markets />
+            }
+          </div>
+          <div className={styles.marketsAside}>
+            <div>
+              <h4 className={styles.marketsAsideFirstTitle}>Mint denom</h4>
+              <div className={styles.underPriceChartSubtitle}>
+                aevmos
+              </div>
+            </div>
+            <div>
+              <h4>Mint decimal</h4>
+              <div className={styles.underPriceChartSubtitle}>
+                18
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </Layout>

@@ -274,10 +274,23 @@ h4.aprApyTitle {
   border-color: #0070f3;
 }
 
+.markets {
+  flex-grow: 4;
+}
+
 .markets h3 {
   text-align: center;
   font-weight: 500;
-  margin: 30px 0;
+  margin: 60px 0 30px;
+}
+
+.marketsAside {
+  flex-grow: 3;
+}
+
+.marketsSection {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .marketsContainer {
@@ -362,10 +375,23 @@ h4.aprApyTitle {
 .underPriceChartSection h4 {
   margin: 25px 0 10px;
   font-weight: 500;
+  white-space: nowrap;
 }
 
-.underPriceChartSection > div {
+.marketsAside h4 {
+  margin: 25px 0 10px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.marketsAside .marketsAsideFirstTitle {
+  margin: 140px 0 10px;
+}
+
+.underPriceChartSection > div, .marketsAside > div {
   margin: 0 20px;
+  flex-basis: 110px;
+  text-align: center;
 }
 
 .underPriceChartSubtitle {
@@ -583,6 +609,14 @@ a:hover .logoSvgIcon {
 
   .pageContainer {
     padding: 0 1rem;
+  }
+
+  .markets h3 {
+    margin: 15px 0 20px;
+  }
+
+  .marketsAside .marketsAsideFirstTitle {
+    margin: 60px 0 10px;
   }
 }
 
