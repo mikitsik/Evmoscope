@@ -1,23 +1,12 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import styles from '../styles/Home.module.css'
 import Logo from './Logo'
-import { useRouter } from 'next/router'
 import Footer from './Footer'
-
-const pages = [
-  {path: '/about', name: 'About'},
-  {path: '/social_and_github', name: 'Social & Github'},
-  {path: '/ibc', name: 'IBC'},
-  {path: '/validators', name: 'Validators'},
-  {path: '/smart_contracts', name: 'Smart Contracts'},
-  {path: '/blocks_and_txs', name: 'Blocks & Txs'},
-  {path: '/economics', name: 'Economics'}
-]
+import NavBar from './NavBar'
+import dynamic from 'next/dynamic'
 
 export function Layout({ children }) {
-  const { asPath } = useRouter()
-  const links = asPath === '/' ? pages.filter(p => p.path === '/about') : pages
+  const NavBar = dynamic(() => import('./NavBar'), { ssr: false })
 
   return (
     <div className={styles.container}>
@@ -28,13 +17,7 @@ export function Layout({ children }) {
       </Head>
       <Logo width="345" height="90"/>
       <main className={styles.main}>
-        <div className={styles.navMain}>
-          { links.map(l => {
-            return <Link key={l.name} href={l.path}>
-              <a className={(asPath === l.path) ? styles.isActiveLink : undefined}>{l.name}</a>
-            </Link>
-          }) }
-        </div>
+        <NavBar />
         { children }
       </main>
       <Footer />

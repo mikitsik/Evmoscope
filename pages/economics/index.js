@@ -145,7 +145,7 @@ export default function Economics() {
       const coingeckoEvmosDataJson = await coingeckoEvmosData.json()
       const inflationData = await fetch('https://rest.bd.evmos.org:1317/evmos/inflation/v1/inflation_rate')
       const inflationDataJson = await inflationData.json()
-      const circSupplyData = await fetch('https://evmos-api.polkachu.com/evmos/inflation/v1/circulating_supply')
+      const circSupplyData = await fetch('https://rest.bd.evmos.org:1317/evmos/inflation/v1/circulating_supply')
       const circSupplyDataJson = await circSupplyData.json()
       const bondedData = await fetch('https://rest.bd.evmos.org:1317/cosmos/staking/v1beta1/pool')
       const bondedDataJson = await bondedData.json()

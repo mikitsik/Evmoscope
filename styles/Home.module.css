@@ -485,6 +485,10 @@ a:hover .logoSvgIcon {
   transition: color 0.15s ease, border-color 0.15s ease;
 }
 
+.navMain a.invisible {
+  display: none;
+}
+
 .navMain a:first-child {
   margin-right: 0;
 }
@@ -496,6 +500,63 @@ a:hover .logoSvgIcon {
 .navMain a:hover, a.isActiveLink {
   color: #0070f3;
   border-color: #0070f3;
+}
+
+.navMain a.hidden {
+  display: none;
+}
+
+.navMain a.isActiveLink {
+  display: inherit;
+}
+
+.navMain a.displayAboutLink {
+  display: block;
+}
+
+.burgerMenu {
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-left: 25px;
+  margin-bottom: 25px;
+}
+
+.burgerMenu.hidden {
+  display: none;
+}
+
+.burgerLine {
+  height: 2px;
+  width: 30px;
+  background-color: black;
+}
+
+.burgerLine.clicked:nth-child(1) {
+  transform: rotate(39deg) translate(5px, 12px);
+  transition: ease-out 0.5s;
+  width: 35px;
+}
+
+.burgerLine.clicked:nth-child(2) {
+  transform: scale(0.1);
+  transition: ease-out 0.5s;
+}
+
+.burgerLine.clicked:nth-child(3) {
+  transform: rotate(140deg) translate(-4px, 11px);
+  transition: ease-out 0.5s;
+  width: 35px;
+}
+
+/* unclicked */
+.burgerLine.unclicked {
+  transform: rotate(0) translate(0);
+  transition: cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
 }
 
 .footer a:hover {
