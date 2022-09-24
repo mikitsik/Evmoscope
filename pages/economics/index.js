@@ -223,7 +223,7 @@ export default function Economics() {
               <div>
                 <h3 className={styles.priceTitle}>
                   <EvmosIcon width={20} height={20} />&nbsp;
-                  price ${economicsData.priceData[economicsData.priceData.length - 1][1].toFixed(2)}
+                  price ${economicsData.evmosData.market_data.current_price.usd.toFixed(2)}
                 </h3>
                 <PriceChart priceData={economicsData.priceData}/>
                 <div className={styles.underPriceChartSection}>
