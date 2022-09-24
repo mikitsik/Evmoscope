@@ -240,7 +240,7 @@ export default function Economics() {
                   <div>
                     <h4>Market cap rank</h4>
                     <div className={styles.underPriceChartSubtitle}>
-                      #{economicsData.evmosData.market_cap_rank}
+                      #&nbsp;{economicsData.evmosData.market_cap_rank}
                     </div>
                   </div>
                   <div>
