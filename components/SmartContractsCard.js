@@ -10,6 +10,7 @@ export default function SmartContractsCard() {
         <p><span>trading volume</span>--</p>
         <p><span>top new</span>--</p>
         <p><span>monthly active</span>--</p>
+        <p><span>coins</span>--</p>
         <p><span>dapps</span>--</p>
       </a>
     </Link>

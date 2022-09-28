@@ -158,6 +158,7 @@
 .pageContainer h3 {
   margin: 2.5rem 0;
   font-size: 1.4rem;
+  font-weight: 400;
 }
 
 .pageContainer p {
@@ -167,7 +168,7 @@
 }
 
 .pageContainer ul {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   letter-spacing: 1px;
   line-height: 1.7;
 }
