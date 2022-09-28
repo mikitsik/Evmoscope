@@ -9,6 +9,7 @@ import AprChart from './components/AprChart'
 import ApyChart from './components/ApyChart'
 import EvmosIcon from '../../components/EvmosIcon'
 import classNames from 'classnames'
+import Image from 'next/image'
 
 const PriceChart = ({ priceData }) => {
   const data = []
@@ -317,6 +318,26 @@ export default function Economics() {
             </div>
           </div>
         </div>
+        <div className={styles.tokenomics}>
+          <h3>Evmos tokenomics</h3>
+          <div className={styles.tokenomicsImages}>
+            <div className={styles.tokenomicsImagesContainer}>
+              <Image src="/token_distr_at_genesis.png" alt="token distribution at genesis" layout="fill" objectFit="contain"/>
+            </div>
+            <div className={styles.tokenomicsImagesContainer}>
+              <Image src="/evmos_supply_over_time.png" alt="evmos supply over time"  layout="fill" objectFit="contain"/>
+            </div>
+          </div>
+          <p>More info about <a
+                                href="https://medium.com/evmos/the-evmos-token-model-edc07014978b"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >Evmos token model...</a>
+          </p>
+
+        </div>
+
+
       </div>
     </Layout>
   )

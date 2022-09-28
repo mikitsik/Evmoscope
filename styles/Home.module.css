@@ -313,6 +313,7 @@ h4.aprApyTitle {
 
 .marketsExpand {
   text-align: center;
+  margin-bottom: 40px;
 }
 
 .marketsExpand span {
@@ -552,6 +553,30 @@ a:hover .logoSvgIcon {
   margin-bottom: 25px;
 }
 
+.tokenomics h3 {
+  text-align: center;
+  font-weight: 500;
+  margin: 3rem 0 5rem;
+}
+
+.tokenomics p {
+  margin-top: 50px;
+}
+
+.tokenomics p a {
+  color: #0070f3;
+}
+
+.tokenomicsImages {
+  display: flex;
+}
+
+.tokenomicsImagesContainer {
+  position: relative;
+  width: 100%;
+  padding-bottom: 26%;
+}
+
 .burgerMenu.hidden {
   display: none;
 }
@@ -594,7 +619,7 @@ a:hover .logoSvgIcon {
   max-width: 350px;
   margin: 0px auto 35px;
   position: relative;
-  transition: ease-out 0.7s;
+  transition: ease-out 0.4s;
 }
 
 .search svg {
@@ -622,7 +647,7 @@ a:hover .logoSvgIcon {
   width: 600px;
   background-color: rgba(0, 0, 0, 0.7);
   transform: scale(0.1);
-  transition: ease-out 0.7s;
+  transition: ease-out 0.4s;
 }
 
 .search.isFocus {
@@ -657,6 +682,20 @@ a:hover .logoSvgIcon {
   font-weight: 500;
 }
 
+@media (max-width: 770px) {
+  .search.isFocus {
+    max-width: 450px;
+  }
+
+  .search.isFocus svg {
+    transform: scale(1.2);
+  }
+
+  .searchBorder {
+    width: 450px;
+  }
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
@@ -686,11 +725,65 @@ a:hover .logoSvgIcon {
   .marketsAside .marketsAsideFirstTitle {
     margin: 60px 0 10px;
   }
+
+  .tokenomicsImagesContainer {
+    position: relative;
+    width: 100%;
+    padding-bottom: 55%;
+    margin-bottom: 50px;
+  }
+
+  .tokenomicsImages {
+    display: block;
+  }
+
+  .search.isFocus {
+    max-width: 350px;
+  }
+
+  .searchBorder {
+    width: 350px;
+  }
 }
 
 @media (max-width: 520px) {
   .markesItem {
     padding: 5px;
+  }
+
+  .search {
+    max-width: 230px;
+  }
+
+  .search input[type=text] {
+    font-size: 1rem;
+    padding: 5px 10px;
+    font-weight: 500;
+  }
+
+  .search input[type=text]::placeholder {
+    font-size: 1rem;
+  }
+
+  .search.isFocus {
+    max-width: 230px;
+  }
+
+  .searchBorder {
+    width: 230px;
+  }
+
+  .search svg {
+    transform: scale(0.8);
+  }
+
+  .search span {
+    top: -4px;
+    right: -33px;
+  }
+
+  .search.isFocus svg {
+    transform: scale(1);
   }
 }
 
