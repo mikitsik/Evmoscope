@@ -62,8 +62,8 @@ export default function EconomicsCard() {
         <p><span>apy, %<span className={styles.iconEvmos}></span></span>{aprAndApy[aprAndApy.length - 1][2]}</p>
         <p><span>circ. supply, <EvmosIcon width={20} height={20} /> M</span>{economicsInfo.circSupply}</p>
         <p><span>market cap, $ M</span>{economicsInfo.marketCap}</p>
-        <p><span>market rank</span>{economicsInfo.rank}</p>
-        <p><span>cosmos ecosys. rank</span>2</p>
+        <p><span>market rank, #</span>{economicsInfo.rank}</p>
+        <p><span>cosmos ecosys. rank, #</span>5</p>
         <p><span>markets</span>{economicsInfo.evmosMarkets}</p>
       </a>
     </Link>
