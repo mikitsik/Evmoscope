@@ -1,4 +1,29 @@
-## Getting Started
+# Evmoscope
+
+It is an UI for [Evmos](https://evmos.org/) EVMS Cosmos chain.
+
+## Installation
+
+Clone with https
+
+`git clone https://github.com/mikitsik/Evmoscope.git`
+
+or with ssh
+
+`git clone git@github.com:mikitsik/Evmoscope.git`
+
+then
+
+```
+cd Evmoscope
+npm run dev
+```
+
+or
+
+`yarn dev`
+
+### Getting Started
 
 First, run the development server:
 
@@ -7,15 +32,6 @@ npm run dev
 # or
 yarn dev
 ```
+Open [http://localhost:3000](http://localhost:3000) with your browser. Click on [Economics](http://localhost:3000/economics) etc...
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Enjoy! &#128076;&#128578;&#128077;
